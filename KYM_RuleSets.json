@@ -1,0 +1,498 @@
+{
+    "setInfo": {
+        "id": "64a6ef2c7934e21e89a69dbd",
+        "version": 1,
+        "created": "2023-07-06 09:43:28",
+        "createdBy": "PAS_RULES_EVAL_SVC",
+        "entered": "2023-07-06 09:52:52",
+        "enteredBy": "PAS_RULES_EVAL_SVC",
+        "name": "KYM-ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR",
+        "startDate": "2023-04-13",
+        "decisionRecordType": "GUIDELINE",
+        "tags": [
+            "MCO Guidelines",
+            "KYM-MCAID-MCO",
+            "A-I",
+            "ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR"
+        ],
+        "status": "DEPLOYABLE"
+    },
+    "rules": [
+        {
+            "rule": {
+                "_id": "64a6ef307934e21e89a6a84c",
+                "created": "2023-07-06T08:16:38.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:54:44.421+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "AC - HF, CCURR Beta Blocker",
+                "decisionSetId": "64a6ef2c7934e21e89a69dbd",
+                "guideline": "KYM-ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR",
+                "documentation": "Approve the request if the diagnosis is chronic heart failure; the patient is symptomatic; there is documentation (e.g., progress note) of LVEF less than or equal to 35% and a resting heart rate of at least 70 bpm; and Corlanor will be used in combination with maximally tolerated doses of a beta blocker (e.g., bisoprolol, carvedilol, or metoprolol succinate).",
+                "startDate": "2023-04-14T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "DIAGNOSIS",
+                            "operator": "IN",
+                            "paramValues": [
+                                "chronic heart failure"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "1. Is the patient symptomatic?",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "groupType": "OR",
+                            "conditions": [
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "2. Does the patient have documentation (e.g., progress note) of Left Ventricular Ejection Fraction (LVEF) less than or equal to 35%?",
+                                        "YES"
+                                    ]
+                                },
+                                {
+                                    "paramName": "LAB_RESULT",
+                                    "operator": "AT_MOST",
+                                    "label": "Left Ventricular Ejection Fraction (%)",
+                                    "paramValues": [
+                                        "35"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "4. Will Corlanor be used in combination with maximally tolerated doses of a beta blocker (e.g., bisoprolol, carvedilol, or metoprolol succinate)?",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "groupType": "OR",
+                            "conditions": [
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "3. Does the patient have documentation of a resting heart rate of at least 70 beats per minute (bpm)?",
+                                        "YES"
+                                    ]
+                                },
+                                {
+                                    "paramName": "LAB_RESULT",
+                                    "operator": "AT_LEAST",
+                                    "label": "Resting Heart Rate (bpm)",
+                                    "paramValues": [
+                                        "70"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "APPROVED",
+                    "message": "Approve by HICL for 1 year with Override Restriction = Yes.  APPROVAL TEXT:  No approval text provided.",
+                    "overrides": [
+                        {
+                            "type": "DURATION_VALUE",
+                            "value": "12"
+                        },
+                        {
+                            "type": "DURATION_TYPE",
+                            "value": "MONTH"
+                        },
+                        {
+                            "type": "APPROVAL_CLASS",
+                            "value": "HICL"
+                        },
+                        {
+                            "type": "OVERRIDE_RESTRICTION",
+                            "value": "OVERRIDE_YES_FLAG"
+                        },
+                        {
+                            "type": "RX_COUNT",
+                            "value": "999"
+                        }
+                    ]
+                },
+                "tags": [
+                    "MCO Guidelines",
+                    "KYM-MCAID-MCO",
+                    "A-I",
+                    "ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef307934e21e89a6a850",
+                "created": "2023-07-06T08:16:38.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:54:44.463+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "AC - HF, No CCURR Beta Blocker",
+                "decisionSetId": "64a6ef2c7934e21e89a69dbd",
+                "guideline": "KYM-ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR",
+                "documentation": "Approve the request if the diagnosis is chronic heart failure; the patient is symptomatic; there is documentation (e.g., progress note) of LVEF less than or equal to 35% and a resting heart rate of at least 70 bpm; and there is documentation (e.g., progress note) of clinical rationale preventing use of a beta-blocker.",
+                "startDate": "2023-04-14T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "DIAGNOSIS",
+                            "operator": "IN",
+                            "paramValues": [
+                                "chronic heart failure"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "1. Is the patient symptomatic?",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "groupType": "OR",
+                            "conditions": [
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "2. Does the patient have documentation (e.g., progress note) of Left Ventricular Ejection Fraction (LVEF) less than or equal to 35%?",
+                                        "YES"
+                                    ]
+                                },
+                                {
+                                    "paramName": "LAB_RESULT",
+                                    "operator": "AT_MOST",
+                                    "label": "Left Ventricular Ejection Fraction (%)",
+                                    "paramValues": [
+                                        "35"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "5. Does the patient have documentation (e.g., progress note) of clinical rationale preventing use of a beta-blocker?",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "groupType": "OR",
+                            "conditions": [
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "3. Does the patient have documentation of a resting heart rate of at least 70 beats per minute (bpm)?",
+                                        "YES"
+                                    ]
+                                },
+                                {
+                                    "paramName": "LAB_RESULT",
+                                    "operator": "AT_LEAST",
+                                    "label": "Resting Heart Rate (bpm)",
+                                    "paramValues": [
+                                        "70"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "APPROVED",
+                    "message": "Approve by HICL for 1 year with Override Restriction = Yes.  APPROVAL TEXT:  No approval text provided.",
+                    "overrides": [
+                        {
+                            "type": "DURATION_VALUE",
+                            "value": "12"
+                        },
+                        {
+                            "type": "DURATION_TYPE",
+                            "value": "MONTH"
+                        },
+                        {
+                            "type": "APPROVAL_CLASS",
+                            "value": "HICL"
+                        },
+                        {
+                            "type": "OVERRIDE_RESTRICTION",
+                            "value": "OVERRIDE_YES_FLAG"
+                        },
+                        {
+                            "type": "RX_COUNT",
+                            "value": "999"
+                        }
+                    ]
+                },
+                "tags": [
+                    "MCO Guidelines",
+                    "KYM-MCAID-MCO",
+                    "A-I",
+                    "ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef307934e21e89a6a858",
+                "created": "2023-07-06T08:16:38.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:54:45.887+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "Beta Blockers",
+                "decisionSetId": "64a6ef2c7934e21e89a69dbd",
+                "guideline": "KYM-ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR",
+                "documentation": "Deny the request if Corlanor will not be used in combination with maximally tolerated doses of a beta blocker (e.g., bisoprolol, carvedilol, or metoprolol succinate); and there is no documentation (e.g., progress note) of clinical rationale preventing use of a beta-blocker.",
+                "startDate": "2023-04-14T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "4. Will Corlanor be used in combination with maximally tolerated doses of a beta blocker (e.g., bisoprolol, carvedilol, or metoprolol succinate)?",
+                                "NO"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "5. Does the patient have documentation (e.g., progress note) of clinical rationale preventing use of a beta-blocker?",
+                                "NO"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "DENIED",
+                    "message": "NOTE:  Do not approve.  DENIAL TEXT:  Our guideline named ANTI-ANGINAL AND ANTI-ISCHEMIC AGENTS requires the following rule(s) be met for approval:  The member meets ONE of the following:  1. Corlanor will be used in combination with maximally tolerated doses of a beta blocker (such as bisoprolol, carvedilol, or metoprolol succinate); 2. The member has documentation (such as progress note) of clinical reason preventing use of a beta-blocker (such as bisoprolol, carvedilol, or metoprolol succinate)."
+                },
+                "tags": [
+                    "MCO Guidelines",
+                    "KYM-MCAID-MCO",
+                    "A-I",
+                    "ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef307934e21e89a6a85d",
+                "created": "2023-07-06T08:16:38.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:54:44.500+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "Dx",
+                "decisionSetId": "64a6ef2c7934e21e89a69dbd",
+                "guideline": "KYM-ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR",
+                "documentation": "Deny the request if the diagnosis is not chronic heart failure.",
+                "startDate": "2023-04-14T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "DIAGNOSIS",
+                            "operator": "NOT_IN",
+                            "paramValues": [
+                                "chronic heart failure"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "DENIED",
+                    "message": "NOTE:  Do not approve.  DENIAL TEXT:  Our guideline named ANTI-ANGINAL AND ANTI-ISCHEMIC AGENTS requires the following rule(s) be met for approval:  The member has chronic [long-term] heart failure [a type of heart condition] and is showing symptoms."
+                },
+                "tags": [
+                    "MCO Guidelines",
+                    "KYM-MCAID-MCO",
+                    "A-I",
+                    "ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef307934e21e89a6a861",
+                "created": "2023-07-06T08:16:38.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:54:47.060+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "LVEF",
+                "decisionSetId": "64a6ef2c7934e21e89a69dbd",
+                "guideline": "KYM-ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR",
+                "documentation": "Deny the request if there is no documentation (e.g., progress note) of LVEF less than or equal to 35%.",
+                "startDate": "2023-04-14T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "2. Does the patient have documentation (e.g., progress note) of Left Ventricular Ejection Fraction (LVEF) less than or equal to 35%?",
+                                "NO"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "DENIED",
+                    "message": "NOTE:  Do not approve.  DENIAL TEXT:  Our guideline named ANTI-ANGINAL AND ANTI-ISCHEMIC AGENTS requires the following rule(s) be met for approval:  The member has documentation (such as progress note) of left ventricular ejection fraction (LVEF) [heart function] less than or equal to 35%."
+                },
+                "tags": [
+                    "MCO Guidelines",
+                    "KYM-MCAID-MCO",
+                    "A-I",
+                    "ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef307934e21e89a6a865",
+                "created": "2023-07-06T08:16:38.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:54:48.100+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "Resting HR",
+                "decisionSetId": "64a6ef2c7934e21e89a69dbd",
+                "guideline": "KYM-ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR",
+                "documentation": "Deny the request if there is no documentation of a resting heart rate of at least 70 bpm.",
+                "startDate": "2023-04-14T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "3. Does the patient have documentation of a resting heart rate of at least 70 beats per minute (bpm)?",
+                                "NO"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "DENIED",
+                    "message": "NOTE:  Do not approve.  DENIAL TEXT:  Our guideline named ANTI-ANGINAL AND ANTI-ISCHEMIC AGENTS requires the following rule(s) be met for approval:  The member has documentation of a resting heart rate greater than or equal to 70 beats per minute (bpm)."
+                },
+                "tags": [
+                    "MCO Guidelines",
+                    "KYM-MCAID-MCO",
+                    "A-I",
+                    "ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef307934e21e89a6a86c",
+                "created": "2023-07-06T08:16:38.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:54:47.368+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "Symptoms",
+                "decisionSetId": "64a6ef2c7934e21e89a69dbd",
+                "guideline": "KYM-ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR",
+                "documentation": "Deny the request if the patient is not symptomatic.",
+                "startDate": "2023-04-14T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "1. Is the patient symptomatic?",
+                                "NO"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "DENIED",
+                    "message": "NOTE:  Do not approve.  DENIAL TEXT:  Our guideline named ANTI-ANGINAL AND ANTI-ISCHEMIC AGENTS requires the following rule(s) be met for approval:  The member has chronic [long-term] heart failure [a type of heart condition] and is showing symptoms."
+                },
+                "tags": [
+                    "MCO Guidelines",
+                    "KYM-MCAID-MCO",
+                    "A-I",
+                    "ANTIANGINAL-ANTIISCHEMIC AGENTS-CORLANOR"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        }
+    ],
+    "decisionSetRevisions": [
+        1
+    ]
+}

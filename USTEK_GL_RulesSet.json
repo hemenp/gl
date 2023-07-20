@@ -1,0 +1,1566 @@
+{
+    "setInfo": {
+        "id": "64a6ef8a6f8da71e752b9e72",
+        "version": 1,
+        "created": "2023-07-06 09:45:00",
+        "createdBy": "PAS_RULES_EVAL_SVC",
+        "entered": "2023-07-06 09:53:04",
+        "enteredBy": "PAS_RULES_EVAL_SVC",
+        "name": "NAT01-USTEKINUMAB-D-R",
+        "startDate": "2022-12-31",
+        "decisionRecordType": "GUIDELINE",
+        "tags": [
+            "PartD Guidelines",
+            "S-Z",
+            "USTEKINUMAB-D-R"
+        ],
+        "status": "DEPLOYABLE"
+    },
+    "rules": [
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af45",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:30.970+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "AC - CD",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Approve the renewal request for a patient with a diagnosis of moderate to severe Crohn's disease (CD).",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "GCN",
+                            "operator": "IN",
+                            "paramValues": [
+                                "19903",
+                                "28158",
+                                "28159"
+                            ]
+                        },
+                        {
+                            "paramName": "DIAGNOSIS",
+                            "operator": "IN",
+                            "paramValues": [
+                                "C. moderate to severe Crohn's disease (CD)"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "APPROVED",
+                    "message": "Approve for 12 months by GPID for all of the following strengths with no quantity limits:  Stelara 45mg/0.5mL vial; Stelara 45mg/0.5mL prefilled syringe; Stelara 90mg/mL prefilled syringe.  APPROVAL TEXT:  (IF APPLICABLE): The requested drug has a plan limit of [XX] per [XX] days.",
+                    "overrides": [
+                        {
+                            "type": "DURATION_VALUE",
+                            "value": "12"
+                        },
+                        {
+                            "type": "DURATION_TYPE",
+                            "value": "MONTH"
+                        },
+                        {
+                            "type": "APPROVAL_CLASS",
+                            "value": "GPID"
+                        },
+                        {
+                            "type": "RX_COUNT",
+                            "value": "999"
+                        }
+                    ]
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af4b",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:27.649+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "AC - Dx, HQ, No Pump",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Approve the renewal request for intravenous (IV) infusion of Stelara (ustekinumab) (GPID 42351) for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC) if this is a pharmacy call or the requested medication is going to be filled at a pharmacy; the internal HQ code is AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01; and the intravenous infusion is not administered via an external infusion pump.",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "GCN",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "42351"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION FOR IV REQUESTS) Is the request for intravenous (IV) infusion of Stelara for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC)?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "groupType": "OR",
+                            "conditions": [
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is this a pharmacy call?}",
+                                        "YES"
+                                    ]
+                                },
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the requested medication going to be filled at a pharmacy?}",
+                                        "YES"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the internal HQ code AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the intravenous infusion administered via an external infusion pump?}",
+                                "NO"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "APPROVED",
+                    "message": "(CUSTOMER SERVICE) PAYMENT DETERMINATION:  Approve for 12 months by HICL under Part D (Populate the B vs. D field with a 'D' in the PA override field).  APPROVAL TEXT:  No approval text provided.",
+                    "overrides": [
+                        {
+                            "type": "DURATION_VALUE",
+                            "value": "12"
+                        },
+                        {
+                            "type": "DURATION_TYPE",
+                            "value": "MONTH"
+                        },
+                        {
+                            "type": "APPROVAL_CLASS",
+                            "value": "HICL"
+                        },
+                        {
+                            "type": "RX_COUNT",
+                            "value": "999"
+                        },
+                        {
+                            "type": "PART_BVD",
+                            "value": "PART_D_DRUG"
+                        }
+                    ]
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af4f",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:31.445+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "AC - Dx, HQ, Pump, No Policies",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Approve the renewal request for intravenous (IV) infusion of Stelara (ustekinumab) (GPID 42351) for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC) if this is a pharmacy call or the requested medication is going to be filled at a pharmacy; the internal HQ code is AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01; the intravenous infusion is administered via an external infusion pump; and the requested drug is not specifically covered under the applicable Medicare Part B coverage policies (National and/or Local Coverage Policies).",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "GCN",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "42351"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION FOR IV REQUESTS) Is the request for intravenous (IV) infusion of Stelara for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC)?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "groupType": "OR",
+                            "conditions": [
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is this a pharmacy call?}",
+                                        "YES"
+                                    ]
+                                },
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the requested medication going to be filled at a pharmacy?}",
+                                        "YES"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the internal HQ code AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the intravenous infusion administered via an external infusion pump?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the requested drug specifically covered under the applicable Medicare Part B coverage policies (National and/or Local Coverage Policies)?}",
+                                "NO"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "APPROVED",
+                    "message": "(CUSTOMER SERVICE) PAYMENT DETERMINATION:  Approve for 12 months by HICL under Part D (Populate the B vs. D field with a 'D' in the PA override field).  APPROVAL TEXT:  No approval text provided.",
+                    "overrides": [
+                        {
+                            "type": "DURATION_VALUE",
+                            "value": "12"
+                        },
+                        {
+                            "type": "DURATION_TYPE",
+                            "value": "MONTH"
+                        },
+                        {
+                            "type": "APPROVAL_CLASS",
+                            "value": "HICL"
+                        },
+                        {
+                            "type": "RX_COUNT",
+                            "value": "999"
+                        },
+                        {
+                            "type": "PART_BVD",
+                            "value": "PART_D_DRUG"
+                        }
+                    ]
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af56",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:30.074+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "AC - Dx, HQ, Pump, Policies",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Approve the renewal request for intravenous (IV) infusion of Stelara (ustekinumab) (GPID 42351) for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC) if this is a pharmacy call or the requested medication is going to be filled at a pharmacy; the internal HQ code is BHP03, MGV01, MGV02, MVS01, MVS02, MVS09, MVS10, MVS11, IBT01, BAY01, EHC01, UHC01, CPL01; the intravenous infusion is administered via an external infusion pump; and the requested drug is specifically covered under the applicable Medicare Part B coverage policies (National and/or Local Coverage Policies).",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "GCN",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "42351"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION FOR IV REQUESTS) Is the request for intravenous (IV) infusion of Stelara for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC)?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "groupType": "OR",
+                            "conditions": [
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is this a pharmacy call?}",
+                                        "YES"
+                                    ]
+                                },
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the requested medication going to be filled at a pharmacy?}",
+                                        "YES"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the internal HQ code AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the intravenous infusion administered via an external infusion pump?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the requested drug specifically covered under the applicable Medicare Part B coverage policies (National and/or Local Coverage Policies)?}",
+                                "YES"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "APPROVED",
+                    "message": "(CUSTOMER SERVICE) PAYMENT DETERMINATION:  Approve Stelara 130mg/26mL (for the induction dose) for 12 months by GPID under Part B (Deny under Part D before approving under Part B. Populate the B vs. D field with a 'B' in the PA override field).  APPROVAL TEXT:  No approval text provided.",
+                    "overrides": [
+                        {
+                            "type": "DURATION_VALUE",
+                            "value": "12"
+                        },
+                        {
+                            "type": "DURATION_TYPE",
+                            "value": "MONTH"
+                        },
+                        {
+                            "type": "APPROVAL_CLASS",
+                            "value": "GPID"
+                        },
+                        {
+                            "type": "RX_COUNT",
+                            "value": "999"
+                        },
+                        {
+                            "type": "PART_BVD",
+                            "value": "PART_B_DRUG"
+                        }
+                    ]
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af59",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:30.793+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "AC - Dx, No HQ, No Pump",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Approve the renewal request for intravenous (IV) infusion of Stelara (ustekinumab) (GPID 42351) for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC) if this is a pharmacy call or the requested medication is going to be filled at a pharmacy; the internal HQ code is not AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01; the pharmacy is dispensing the drug directly to the member or member's representative; and the intravenous infusion is not administered via an external infusion pump.",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "GCN",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "42351"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION FOR IV REQUESTS) Is the request for intravenous (IV) infusion of Stelara for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC)?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "groupType": "OR",
+                            "conditions": [
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is this a pharmacy call?}",
+                                        "YES"
+                                    ]
+                                },
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the requested medication going to be filled at a pharmacy?}",
+                                        "YES"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the internal HQ code AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01?}",
+                                "NO"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) If the internal HQ code is NOT AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01, is the pharmacy dispensing the drug directly to the member or member's representative?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the intravenous infusion administered via an external infusion pump?}",
+                                "NO"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "APPROVED",
+                    "message": "(CUSTOMER SERVICE) PAYMENT DETERMINATION:  Approve for 12 months by HICL under Part D (Populate the B vs. D field with a 'D' in the PA override field).  APPROVAL TEXT:  No approval text provided.",
+                    "overrides": [
+                        {
+                            "type": "DURATION_VALUE",
+                            "value": "12"
+                        },
+                        {
+                            "type": "DURATION_TYPE",
+                            "value": "MONTH"
+                        },
+                        {
+                            "type": "APPROVAL_CLASS",
+                            "value": "HICL"
+                        },
+                        {
+                            "type": "RX_COUNT",
+                            "value": "999"
+                        },
+                        {
+                            "type": "PART_BVD",
+                            "value": "PART_D_DRUG"
+                        }
+                    ]
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af60",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:30.454+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "AC - Dx, No HQ, Not Dispense",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Approve the renewal request for intravenous (IV) infusion of Stelara (ustekinumab) (GPID 42351) for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC) if this is a pharmacy call or the requested medication is going to be filled at a pharmacy; the internal HQ code is not AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01; the pharmacy is not dispensing the drug directly to the member or member's representative; and the internal HQ code is not SUM03 or VHP01.",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "GCN",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "42351"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION FOR IV REQUESTS) Is the request for intravenous (IV) infusion of Stelara for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC)?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "groupType": "OR",
+                            "conditions": [
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is this a pharmacy call?}",
+                                        "YES"
+                                    ]
+                                },
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the requested medication going to be filled at a pharmacy?}",
+                                        "YES"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the internal HQ code AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01?}",
+                                "NO"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) If the internal HQ code is NOT AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01, is the pharmacy dispensing the drug directly to the member or member's representative?}",
+                                "NO"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the internal HQ code SUM03 or VHP01?}",
+                                "NO"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "APPROVED",
+                    "message": "(CUSTOMER SERVICE) PAYMENT DETERMINATION:  Approve for 12 months by HICL under Part B (Deny under Part D before approving under Part B. Populate the B vs. D field with a 'B' in the PA override field).  APPROVAL TEXT:  No approval text provided.",
+                    "overrides": [
+                        {
+                            "type": "DURATION_VALUE",
+                            "value": "12"
+                        },
+                        {
+                            "type": "DURATION_TYPE",
+                            "value": "MONTH"
+                        },
+                        {
+                            "type": "APPROVAL_CLASS",
+                            "value": "HICL"
+                        },
+                        {
+                            "type": "RX_COUNT",
+                            "value": "999"
+                        },
+                        {
+                            "type": "PART_BVD",
+                            "value": "PART_B_DRUG"
+                        }
+                    ]
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af68",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:30.152+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "AC - Dx, No HQ, Pump, No Policies",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Approve the renewal request for intravenous (IV) infusion of Stelara (ustekinumab) (GPID 42351) for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC) if this is a pharmacy call or the requested medication is going to be filled at a pharmacy; the internal HQ code is not AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01; the pharmacy is dispensing the drug directly to the member or member's representative; the intravenous infusion is administered via an external infusion pump; and the requested drug is not specifically covered under the applicable Medicare Part B coverage policies (National and/or Local Coverage Policies).",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "GCN",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "42351"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION FOR IV REQUESTS) Is the request for intravenous (IV) infusion of Stelara for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC)?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "groupType": "OR",
+                            "conditions": [
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is this a pharmacy call?}",
+                                        "YES"
+                                    ]
+                                },
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the requested medication going to be filled at a pharmacy?}",
+                                        "YES"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the internal HQ code AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01?}",
+                                "NO"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) If the internal HQ code is NOT AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01, is the pharmacy dispensing the drug directly to the member or member's representative?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the intravenous infusion administered via an external infusion pump?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the requested drug specifically covered under the applicable Medicare Part B coverage policies (National and/or Local Coverage Policies)?}",
+                                "NO"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "APPROVED",
+                    "message": "(CUSTOMER SERVICE) PAYMENT DETERMINATION:  Approve for 12 months by HICL under Part D (Populate the B vs. D field with a 'D' in the PA override field).  APPROVAL TEXT:  No approval text provided.",
+                    "overrides": [
+                        {
+                            "type": "DURATION_VALUE",
+                            "value": "12"
+                        },
+                        {
+                            "type": "DURATION_TYPE",
+                            "value": "MONTH"
+                        },
+                        {
+                            "type": "APPROVAL_CLASS",
+                            "value": "HICL"
+                        },
+                        {
+                            "type": "RX_COUNT",
+                            "value": "999"
+                        },
+                        {
+                            "type": "PART_BVD",
+                            "value": "PART_D_DRUG"
+                        }
+                    ]
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af6c",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:30.532+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "AC - Dx, No HQ, Pump, Policies",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Approve the renewal request for intravenous (IV) infusion of Stelara (ustekinumab) (GPID 42351) for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC) if this is a pharmacy call or the requested medication is going to be filled at a pharmacy; the internal HQ code is not AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01; the pharmacy is dispensing the drug directly to the member or member's representative; the intravenous infusion is administered via an external infusion pump; and the requested drug is specifically covered under the applicable Medicare Part B coverage policies (National and/or Local Coverage Policies).",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "GCN",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "42351"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION FOR IV REQUESTS) Is the request for intravenous (IV) infusion of Stelara for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC)?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "groupType": "OR",
+                            "conditions": [
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is this a pharmacy call?}",
+                                        "YES"
+                                    ]
+                                },
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the requested medication going to be filled at a pharmacy?}",
+                                        "YES"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the internal HQ code AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01?}",
+                                "NO"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) If the internal HQ code is NOT AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01, is the pharmacy dispensing the drug directly to the member or member's representative?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the intravenous infusion administered via an external infusion pump?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the requested drug specifically covered under the applicable Medicare Part B coverage policies (National and/or Local Coverage Policies)?}",
+                                "YES"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "APPROVED",
+                    "message": "(CUSTOMER SERVICE) PAYMENT DETERMINATION:  Approve Stelara 130mg/26mL (for the induction dose) for 12 months by GPID under Part B (Deny under Part D before approving under Part B. Populate the B vs. D field with a 'B' in the PA override field).  APPROVAL TEXT:  No approval text provided.",
+                    "overrides": [
+                        {
+                            "type": "DURATION_VALUE",
+                            "value": "12"
+                        },
+                        {
+                            "type": "DURATION_TYPE",
+                            "value": "MONTH"
+                        },
+                        {
+                            "type": "APPROVAL_CLASS",
+                            "value": "GPID"
+                        },
+                        {
+                            "type": "RX_COUNT",
+                            "value": "999"
+                        },
+                        {
+                            "type": "PART_BVD",
+                            "value": "PART_B_DRUG"
+                        }
+                    ]
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af74",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:30.113+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "AC - No Dx, IV, Part D",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Approve the renewal request for intravenous (IV) infusion of Stelara (ustekinumab) (GPID 42351) if the diagnosis is not moderate to severe ulcerative colitis (UC) or moderate to severe Crohn's disease (CD).",
+                "startDate": "2022-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "GCN",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "42351"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION FOR IV REQUESTS) Is the request for intravenous (IV) infusion of Stelara for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC)?}",
+                                "NO"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "APPROVED",
+                    "message": "(CUSTOMER SERVICE) PAYMENT DETERMINATION:  Approve for 12 months by HICL under Part D (Populate the B vs. D field with a 'D' in the PA override field).  APPROVAL TEXT:  No approval text provided.",
+                    "overrides": [
+                        {
+                            "type": "DURATION_VALUE",
+                            "value": "12"
+                        },
+                        {
+                            "type": "DURATION_TYPE",
+                            "value": "MONTH"
+                        },
+                        {
+                            "type": "APPROVAL_CLASS",
+                            "value": "HICL"
+                        },
+                        {
+                            "type": "RX_COUNT",
+                            "value": "999"
+                        },
+                        {
+                            "type": "PART_BVD",
+                            "value": "PART_D_DRUG"
+                        }
+                    ]
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af7a",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:29.597+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "AC - Plaque Psoriasis",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Approve the renewal request for a patient with a diagnosis of moderate to severe plaque psoriasis (PsO); and the patient continues to benefit from the medication.",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "GCN",
+                            "operator": "IN",
+                            "paramValues": [
+                                "19903",
+                                "28158",
+                                "28159"
+                            ]
+                        },
+                        {
+                            "paramName": "DIAGNOSIS",
+                            "operator": "IN",
+                            "paramValues": [
+                                "B. moderate to severe plaque psoriasis (PsO)"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "1. Does the patient continue to benefit from the medication?",
+                                "YES"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "APPROVED",
+                    "message": "Approve for 12 months by GPID for all of the following strengths with no quantity limits:  Stelara 45mg/0.5mL vial; Stelara 45mg/0.5mL prefilled syringe; Stelara 90mg/mL prefilled syringe.  APPROVAL TEXT:  (IF APPLICABLE): The requested drug has a plan limit of [XX] per [XX] days.",
+                    "overrides": [
+                        {
+                            "type": "DURATION_VALUE",
+                            "value": "12"
+                        },
+                        {
+                            "type": "DURATION_TYPE",
+                            "value": "MONTH"
+                        },
+                        {
+                            "type": "APPROVAL_CLASS",
+                            "value": "GPID"
+                        },
+                        {
+                            "type": "RX_COUNT",
+                            "value": "999"
+                        }
+                    ]
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af7e",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:29.261+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "AC - Psoriatic Arthritis",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Approve the renewal request if the diagnosis is psoriatic arthritis (PsA); and the patient continues to benefit from the medication.",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "GCN",
+                            "operator": "IN",
+                            "paramValues": [
+                                "19903",
+                                "28158",
+                                "28159"
+                            ]
+                        },
+                        {
+                            "paramName": "DIAGNOSIS",
+                            "operator": "IN",
+                            "paramValues": [
+                                "A. psoriatic arthritis (PsA)"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "1. Does the patient continue to benefit from the medication?",
+                                "YES"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "APPROVED",
+                    "message": "Approve for 12 months by GPID for all of the following strengths with no quantity limits:  Stelara 45mg/0.5mL vial; Stelara 45mg/0.5mL prefilled syringe; Stelara 90mg/mL prefilled syringe.  APPROVAL TEXT:  (IF APPLICABLE): The requested drug has a plan limit of [XX] per [XX] days.",
+                    "overrides": [
+                        {
+                            "type": "DURATION_VALUE",
+                            "value": "12"
+                        },
+                        {
+                            "type": "DURATION_TYPE",
+                            "value": "MONTH"
+                        },
+                        {
+                            "type": "APPROVAL_CLASS",
+                            "value": "GPID"
+                        },
+                        {
+                            "type": "RX_COUNT",
+                            "value": "999"
+                        }
+                    ]
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af83",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:31.526+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "AC - UC",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Approve the renewal request for a patient with a diagnosis of moderate to severe ulcerative colitis (UC).",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "GCN",
+                            "operator": "IN",
+                            "paramValues": [
+                                "19903",
+                                "28158",
+                                "28159"
+                            ]
+                        },
+                        {
+                            "paramName": "DIAGNOSIS",
+                            "operator": "IN",
+                            "paramValues": [
+                                "D. moderate to severe ulcerative colitis (UC)"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "APPROVED",
+                    "message": "Approve for 12 months by GPID for all of the following strengths with no quantity limits:  Stelara 45mg/0.5mL vial; Stelara 45mg/0.5mL prefilled syringe; Stelara 90mg/mL prefilled syringe.  APPROVAL TEXT:  (IF APPLICABLE): The requested drug has a plan limit of [XX] per [XX] days.",
+                    "overrides": [
+                        {
+                            "type": "DURATION_VALUE",
+                            "value": "12"
+                        },
+                        {
+                            "type": "DURATION_TYPE",
+                            "value": "MONTH"
+                        },
+                        {
+                            "type": "APPROVAL_CLASS",
+                            "value": "GPID"
+                        },
+                        {
+                            "type": "RX_COUNT",
+                            "value": "999"
+                        }
+                    ]
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af87",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:28.678+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "Dx",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Deny the renewal request if the diagnosis is not psoriatic arthritis, moderate to severe plaque psoriasis, moderate to severe Crohn's disease, or moderate to severe ulcerative colitis (UC).",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "DIAGNOSIS",
+                            "operator": "NOT_IN",
+                            "paramValues": [
+                                "A. psoriatic arthritis (PsA)",
+                                "B. moderate to severe plaque psoriasis (PsO)",
+                                "C. moderate to severe Crohn's disease (CD)",
+                                "D. moderate to severe ulcerative colitis (UC)"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "DENIED",
+                    "message": "NOTE:  Do not approve. Some terms are already pre-defined in parenthesis. Please use these definitions if the particular text you need to use does not already have definition(s) in it.  DENIAL TEXT:  Our guideline named USTEKINUMAB (Stelara) requires the following rules be met for renewal: A. You have ONE of the following diagnoses: 1. Psoriatic arthritis (PsA: a type of skin or joint condition), 2. Moderate to severe plaque psoriasis (PsO: a type of skin condition), 3. Moderate to severe Crohn's disease (CD: a type of bowel disorders), 4. Moderate to severe ulcerative colitis (UC: a type of digestive disorders). B. If you have psoriatic arthritis or moderate to severe plaque psoriasis, renewal also requires: 1. You continue to benefit from the medication. Your doctor told us [INSERT PT SPECIFIC INFO PROVIDED]. We do not have information showing you [INSERT UNMET CRITERIA]. This is why your request is denied. Please work with your doctor to use a different medication or get us more information if it will allow us to approve this request."
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af8e",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:27.528+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "IV",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Requires further review for Stelara 130mg/26mL intravenous (GPID 42351) if the diagnosis is psoriatic arthritis (PsA), moderate to severe plaque psoriasis (PsO), moderate to severe Crohn's disease (CD), or moderate to severe ulcerative colitis (UC).",
+                "startDate": "2020-05-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "GCN",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "42351"
+                            ]
+                        },
+                        {
+                            "paramName": "DIAGNOSIS",
+                            "operator": "IN",
+                            "paramValues": [
+                                "A. psoriatic arthritis (PsA)",
+                                "B. moderate to severe plaque psoriasis (PsO)",
+                                "C. moderate to severe Crohn's disease (CD)",
+                                "D. moderate to severe ulcerative colitis (UC)"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "REQUIRING_FURTHER_REVIEW",
+                    "message": "NOTE:  Send to clinical for review."
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af92",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:29.902+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "PsA, Improvement",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Deny the renewal request if the diagnosis is psoriatic arthritis (PsA); and the patient did not continue to benefit from the medication.",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "DIAGNOSIS",
+                            "operator": "IN",
+                            "paramValues": [
+                                "A. psoriatic arthritis (PsA)"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "1. Does the patient continue to benefit from the medication?",
+                                "NO"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "DENIED",
+                    "message": "NOTE:  Do not approve. Some terms are already pre-defined in parenthesis. Please use these definitions if the particular text you need to use does not already have definition(s) in it.  DENIAL TEXT:  Our guideline named USTEKINUMAB (Stelara) requires the following rules be met for renewal: A. You have ONE of the following diagnoses: 1. Psoriatic arthritis (PsA: a type of skin or joint condition), 2. Moderate to severe plaque psoriasis (PsO: a type of skin condition), 3. Moderate to severe Crohn's disease (CD: a type of bowel disorders), 4. Moderate to severe ulcerative colitis (UC: a type of digestive disorders). B. If you have psoriatic arthritis or moderate to severe plaque psoriasis, renewal also requires: 1. You continue to benefit from the medication. Your doctor told us [INSERT PT SPECIFIC INFO PROVIDED]. We do not have information showing you [INSERT UNMET CRITERIA]. This is why your request is denied. Please work with your doctor to use a different medication or get us more information if it will allow us to approve this request."
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af96",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:29.639+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "PsO, Improvement",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Deny the renewal request if the diagnosis is moderate to severe plaque psoriasis (PsO); and the patient did not continue to benefit from the medication.",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "DIAGNOSIS",
+                            "operator": "IN",
+                            "paramValues": [
+                                "B. moderate to severe plaque psoriasis (PsO)"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "1. Does the patient continue to benefit from the medication?",
+                                "NO"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "DENIED",
+                    "message": "NOTE:  Do not approve. Some terms are already pre-defined in parenthesis. Please use these definitions if the particular text you need to use does not already have definition(s) in it.  DENIAL TEXT:  Our guideline named USTEKINUMAB (Stelara) requires the following rules be met for renewal: A. You have ONE of the following diagnoses: 1. Psoriatic arthritis (PsA: a type of skin or joint condition), 2. Moderate to severe plaque psoriasis (PsO: a type of skin condition), 3. Moderate to severe Crohn's disease (CD: a type of bowel disorders), 4. Moderate to severe ulcerative colitis (UC: a type of digestive disorders). B. If you have psoriatic arthritis or moderate to severe plaque psoriasis, renewal also requires: 1. You continue to benefit from the medication. Your doctor told us [INSERT PT SPECIFIC INFO PROVIDED]. We do not have information showing you [INSERT UNMET CRITERIA]. This is why your request is denied. Please work with your doctor to use a different medication or get us more information if it will allow us to approve this request."
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2af9c",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:29.184+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "Px Call, Dispense",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Refer to plan if the request is for intravenous (IV) infusion of Stelara for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC); this is not a pharmacy call; and the requested medication is not going to be filled at a pharmacy.",
+                "startDate": "2022-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION FOR IV REQUESTS) Is the request for intravenous (IV) infusion of Stelara for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC)?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is this a pharmacy call?}",
+                                "NO"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the requested medication going to be filled at a pharmacy?}",
+                                "NO"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "REQUIRING_FURTHER_REVIEW",
+                    "message": "NOTE:  Refer to plan. (This should be processed under the member's medical benefit)"
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        },
+        {
+            "rule": {
+                "_id": "64a6ef8c9e90ba56fbd2afa0",
+                "created": "2023-07-06T07:39:00.000+00:00",
+                "createdBy": "GUIDELINE_EXTRACTOR",
+                "entered": "2023-07-06T16:55:31.242+00:00",
+                "enteredBy": "GUIDELINE_EXTRACTOR",
+                "name": "Px Call, Dispense, SUM, VHP",
+                "decisionSetId": "64a6ef8a6f8da71e752b9e72",
+                "guideline": "NAT01-USTEKINUMAB-D-R",
+                "documentation": "Refer the request to the plan for intravenous (IV) infusion of Stelara (ustekinumab) (GPID 42351) for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC) if this is a pharmacy call OR the requested medication is going to be filled at a pharmacy; the internal HQ code is not AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01; the pharmacy is not dispensing the drug directly to the member or member's representative; and the internal HQ code is SUM03 or VHP01.",
+                "startDate": "2023-01-01T00:00:00.000+00:00",
+                "conditionGroup": {
+                    "groupType": "AND",
+                    "conditions": [
+                        {
+                            "paramName": "GCN",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "42351"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION FOR IV REQUESTS) Is the request for intravenous (IV) infusion of Stelara for the treatment of moderate to severe Crohn's disease (CD) or moderate to severe ulcerative colitis (UC)?}",
+                                "YES"
+                            ]
+                        },
+                        {
+                            "groupType": "OR",
+                            "conditions": [
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is this a pharmacy call?}",
+                                        "YES"
+                                    ]
+                                },
+                                {
+                                    "paramName": "QUESTION",
+                                    "operator": "EQUAL",
+                                    "paramValues": [
+                                        "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the requested medication going to be filled at a pharmacy?}",
+                                        "YES"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the internal HQ code AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01?}",
+                                "NO"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) If the internal HQ code is NOT AHF01, AHF02, ASP02, BAY01, BHP03, CHG09, CLC01, CLH01, CPL01, EHC01, GLD01, HTH05, MCX01, MRI03, MVS01, MVS09, MVS10, MVS11, PRW01, RPS01, UHC01, is the pharmacy dispensing the drug directly to the member or member's representative?}",
+                                "NO"
+                            ]
+                        },
+                        {
+                            "paramName": "QUESTION",
+                            "operator": "EQUAL",
+                            "paramValues": [
+                                "{(CUSTOMER SERVICE PAYMENT DETERMINATION) Is the internal HQ code SUM03 or VHP01?}",
+                                "YES"
+                            ]
+                        }
+                    ]
+                },
+                "decisionOutcome": {
+                    "status": "REQUIRING_FURTHER_REVIEW",
+                    "message": "NOTE:  Refer to plan. (The health plan makes the final payment determination decision) For CSR's: refer the caller to contact the plan, provide the plan's phone number, and advise that the plan will make the UNSAID BvD Prior Authorization Payment determination and Clinical determination for this particular product. (Do Not Enter any override). For PAC's: Send an email to plan (reference UNSAID section of PACIP)."
+                },
+                "tags": [
+                    "PartD Guidelines",
+                    "S-Z",
+                    "USTEKINUMAB-D-R"
+                ],
+                "version": 1,
+                "status": "DEPLOYABLE",
+                "_class": "com.medimpact.pas.rules.eval.doc.DecisionRuleRaw"
+            },
+            "versions": [
+                1
+            ],
+            "labelVersion": "1"
+        }
+    ],
+    "decisionSetRevisions": [
+        1
+    ]
+}
